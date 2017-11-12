@@ -1,0 +1,4 @@
+---
+# For some reaon s3cmd only works when buckte name has an underscore
+fakes3_bucket: s3_dev
+fakes3_root: /mnt/fakes3_root

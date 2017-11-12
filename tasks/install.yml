@@ -1,0 +1,22 @@
+---
+- name: install fake s3
+  gem:
+    name: fakes3
+    state: present
+    user_install: no
+
+- name: copy fake s3 systemd unit file into place
+  template:
+    src: fakes3.service.j2
+    dest: /etc/systemd/system/fakes3.service
+
+- name: ensure fake s3 is enabled
+  systemd:
+    name: fakes3
+    state: started
+    enabled: yes
+
+- name: install s3cmd
+  apt:
+    package: s3cmd
+    state: present

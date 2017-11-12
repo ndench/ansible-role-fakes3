@@ -1,9 +1,10 @@
-Mailhog
-=========
+fakes3
+======
 
-[![Build Status](https://travis-ci.org/ndench/ansible-role-mailhog.svg?branch=master)](https://travis-ci.org/ndench/ansible-role-mailhog)
+[![Build Status](https://travis-ci.org/ndench/ansible-role-fakes3.svg?branch=master)](https://travis-ci.org/ndench/ansible-role-fakes3)
 
-Ansible role to install [Mailhog](https://github.com/mailhog/MailHog) as a Systemd service.
+Ansible role to install [fakes3](https://github.com/jubos/fake-s3) as a Systemd service.
+Also installs s3cmd and creates a bucket.
 
 Requirements
 ------------
@@ -16,8 +17,8 @@ Role Variables
 All variables are listed below, along with their default values in [defaults/main.yml](defaults/main.yml):
 
 ```yaml
-ndench_mailhog:
-    version: 1.0.0 # The version of mailhog to install
+fakes3_bucket: s3_dev # for some reason if the bucket name doesn't have an underscore, s3cmd will fail
+fakes3_root: /mnt/fakes3_root
 ```
 
 Dependencies
@@ -32,7 +33,7 @@ Including an example of how to use your role (for instance, with variables passe
 
     - hosts: dev
       roles:
-         - { role: ndench.mailhog }
+         - { role: ndench.fakes3 }
 
 License
 -------
@@ -43,3 +44,8 @@ Author Information
 ------------------
 
 This role was created in 2017 by [Nathan Dench](https://www.linkedin.com/in/nathandench/).
+
+TODO
+----
+
+* use the s3_bucket ansible module instead of s3cmd

@@ -9,6 +9,7 @@ python: "3.6"
 env:
   - ANSIBLE_VERSION=latest
   - ANSIBLE_VERSION=2.4
+  - ANSIBLE_ROLES_PATH=.
 
 branches:
   only:
@@ -21,6 +22,7 @@ install:
   # Install Ansible.
   - if [ "$ANSIBLE_VERSION" = "latest" ]; then pip install ansible; else pip install ansible==$ANSIBLE_VERSION; fi
   - if [ "$ANSIBLE_VERSION" = "latest" ]; then pip install ansible-lint; fi
+  - ansible-galaxy install --roles-path . geerlingguy.ruby
 
 script:
   # Check the role/playbook's syntax.

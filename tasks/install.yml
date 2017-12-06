@@ -17,6 +17,9 @@
     state: started
     enabled: yes
 
+- name: install fakes3 manually
+  command: gem install fakes3
+
 - name: check fakes3 bin exists
   command: ls /usr/local/bin
 

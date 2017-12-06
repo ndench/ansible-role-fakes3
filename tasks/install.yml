@@ -17,11 +17,20 @@
     state: started
     enabled: yes
 
-- name: install fakes3 manually
-  command: gem install fakes3
+- name: GEM_HOME
+  shell: echo $GEM_HOME
+
+- name: install fakes3 manually not as user
+  shell: gem install fakes3 --no-user-install
+
+- name: install fakes3 manually as user
+  shell: gem install fakes3 --user-install
 
 - name: check fakes3 bin exists
-  command: ls /usr/local/bin
+  command: ls /usr/local/bin/fakes3
+
+- name: which fakes3
+  shell: which fakes3
 
 - name: check fakes3 is listening
   command: netstat -tulpn

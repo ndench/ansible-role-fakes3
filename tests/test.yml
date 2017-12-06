@@ -1,5 +1,7 @@
 ---
 - hosts: localhost
   connection: local
+  vars:
+    fakes3_root: ./fakes3
   roles:
     - ../../ansible-role-fakes3

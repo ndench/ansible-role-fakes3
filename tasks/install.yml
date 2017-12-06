@@ -1,4 +1,10 @@
 ---
+- name: command gem environment
+  command: gem environment
+
+- name: shell gem environment
+  shell: gem environment
+
 - name: install fake s3 without user
   gem:
     name: fakes3

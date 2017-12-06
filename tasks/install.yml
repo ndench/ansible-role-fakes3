@@ -3,10 +3,6 @@
   command: gem environment
   ignore_errors: yes
 
-- name: shell gem environment
-  shell: gem environment
-  ignore_errors: yes
-
 - name: install fake s3 without user
   gem:
     name: fakes3
@@ -14,7 +10,7 @@
     user_install: no
 
 - name: which fakes3
-  shell: which fakes3
+  shell: ls /home/travis/.rvm/gems/ruby-2.4.1/bin /root/.gem/ruby/2.3.0/bin
   ignore_errors: yes
 
 - name: install fake s3 with user
@@ -24,7 +20,7 @@
     user_install: yes
 
 - name: which fakes3
-  shell: which fakes3
+  shell: ls /home/travis/.rvm/gems/ruby-2.4.1/bin /root/.gem/ruby/2.3.0/bin
   ignore_errors: yes
 
 - name: copy fake s3 systemd unit file into place
@@ -48,14 +44,14 @@
   ignore_errors: yes
 
 - name: which fakes3
-  shell: which fakes3
+  shell: ls /home/travis/.rvm/gems/ruby-2.4.1/bin /root/.gem/ruby/2.3.0/bin
   ignore_errors: yes
 
 - name: install fakes3 manually as user
   shell: gem install fakes3 --user-install
 
 - name: which fakes3
-  shell: which fakes3
+  shell: ls /home/travis/.rvm/gems/ruby-2.4.1/bin /root/.gem/ruby/2.3.0/bin
   ignore_errors: yes
 
 - name: check fakes3 bin exists

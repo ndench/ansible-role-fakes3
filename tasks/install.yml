@@ -17,6 +17,9 @@
     state: started
     enabled: yes
 
+- name: check fakes3 bin exists
+  command: ls /usr/local/bin
+
 - name: check fakes3 is listening
   command: netstat -tulpn
 

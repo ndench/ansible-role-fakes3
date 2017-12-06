@@ -1,9 +1,11 @@
 ---
 - name: command gem environment
   command: gem environment
+  ignore_errors: yes
 
 - name: shell gem environment
   shell: gem environment
+  ignore_errors: yes
 
 - name: install fake s3 without user
   gem:
@@ -13,6 +15,7 @@
 
 - name: which fakes3
   shell: which fakes3
+  ignore_errors: yes
 
 - name: install fake s3 with user
   gem:
@@ -22,6 +25,7 @@
 
 - name: which fakes3
   shell: which fakes3
+  ignore_errors: yes
 
 - name: copy fake s3 systemd unit file into place
   template:
@@ -37,33 +41,40 @@
 
 - name: GEM_HOME
   shell: echo $GEM_HOME
+  ignore_errors: yes
 
 - name: install fakes3 manually not as user
   shell: gem install fakes3 --no-user-install
+  ignore_errors: yes
 
 - name: which fakes3
   shell: which fakes3
+  ignore_errors: yes
 
 - name: install fakes3 manually as user
   shell: gem install fakes3 --user-install
 
 - name: which fakes3
   shell: which fakes3
+  ignore_errors: yes
 
 - name: check fakes3 bin exists
-  command: ls /usr/local/bin/fakes3
+  command: ls /usr/local/bin/fakes3 /usr/bin/fakes3
+  ignore_errors: yes
 
 - name: check fakes3 is listening
   command: netstat -tulpn
 
 - name: grep fakes3
   shell: systemctl | grep fakes3
+  ignore_errors: yes
 
 - name: journalctl
   command: journalctl
 
 - name: check fakes3 is running
   command: systemctl status fakes3
+  ignore_errors: yes
 
 - name: install s3cmd
   apt:

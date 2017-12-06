@@ -1,9 +1,21 @@
 ---
-- name: install fake s3
+- name: install fake s3 without user
   gem:
     name: fakes3
     state: present
     user_install: no
+
+- name: which fakes3
+  shell: which fakes3
+
+- name: install fake s3 with user
+  gem:
+    name: fakes3
+    state: present
+    user_install: yes
+
+- name: which fakes3
+  shell: which fakes3
 
 - name: copy fake s3 systemd unit file into place
   template:
@@ -23,14 +35,17 @@
 - name: install fakes3 manually not as user
   shell: gem install fakes3 --no-user-install
 
+- name: which fakes3
+  shell: which fakes3
+
 - name: install fakes3 manually as user
   shell: gem install fakes3 --user-install
 
-- name: check fakes3 bin exists
-  command: ls /usr/local/bin/fakes3
-
 - name: which fakes3
   shell: which fakes3
+
+- name: check fakes3 bin exists
+  command: ls /usr/local/bin/fakes3
 
 - name: check fakes3 is listening
   command: netstat -tulpn

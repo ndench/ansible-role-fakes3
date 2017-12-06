@@ -9,14 +9,17 @@
   command: ls {{ ansible_env.GEM_HOME }} {{ ansible_env.GEM_HOME }}/bin
   ignore_errors: yes
 
-- name: check gem_path
-  command: ls {{ ansible_env.GEM_PATH }} {{ ansible_env.GEM_PATH }}/bin
+- name: run fakes3
+  command: {{ ansible_env.GEM_HOME }}/bin/fakes3
   ignore_errors: yes
 
 - name: copy fake s3 systemd unit file into place
   template:
     src: fakes3.service.j2
     dest: /etc/systemd/system/fakes3.service
+
+- name: journalctl
+  command: journalctl -xe
 
 - name: ensure fake s3 is enabled
   systemd:

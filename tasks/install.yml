@@ -17,6 +17,12 @@
     state: started
     enabled: yes
 
+- name: check fakes3 is running
+  command: systemctl status fakes3
+
+- name: check fakes3 is listening
+  command: netstat -tulpn
+
 - name: install s3cmd
   apt:
     package: s3cmd

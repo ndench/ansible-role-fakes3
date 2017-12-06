@@ -21,7 +21,7 @@
   command: netstat -tulpn
 
 - name: grep fakes3
-  command: systemctl | grep fakes3
+  shell: systemctl | grep fakes3
 
 - name: journalctl
   command: journalctl

@@ -1,7 +1,0 @@
----
-- hosts: localhost
-  connection: local
-  vars:
-    fakes3_root: "{{ ansible_env.HOME }}/fakes3"
-  roles:
-    - ../../ansible-role-fakes3

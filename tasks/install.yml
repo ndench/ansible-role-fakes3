@@ -1,34 +1,18 @@
 ---
 - name: install fake s3
   gem:
-    name: fakes3
+    name: "{{ fakes3_gem }}"
     state: present
     user_install: no
-
-- name: check gem_home
-  command: "ls {{ ansible_env.GEM_HOME }} {{ ansible_env.GEM_HOME }}/bin"
-  ignore_errors: yes
-
-- name: run fakes3
-  command: "{{ ansible_env.GEM_HOME }}/bin/fakes3"
-  ignore_errors: yes
 
 - name: copy fake s3 systemd unit file into place
   template:
     src: fakes3.service.j2
     dest: /etc/systemd/system/fakes3.service
 
-- name: journalctl
-  command: journalctl -xe
-
 - name: ensure fake s3 is enabled
   systemd:
-    daemon_reload: yes
     name: fakes3
-    state: started
-    enabled: yes
-
-- name: install s3cmd
-  apt:
-    package: s3cmd
-    state: present
+    daemon_reload: true
+    state: "{{ fakes3_service_state }}"
+    enabled: "{{ fakes3_service_enabled }}"

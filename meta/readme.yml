@@ -1,0 +1,22 @@
+---
+galaxy_name: ndench.fakes3
+github_user: ndench
+github_name: ansible-role-fakes3
+badges: |
+  [![Build Status](https://img.shields.io/travis/ndench/ansible-role-fakes3.svg)](https://travis-ci.org/ndench/ansible-role-fakes3)
+  [![Galaxy](http://img.shields.io/badge/galaxy-ndench.fakes3-role-blue.svg)](https://galaxy.ansible.com/ndench/fakes3)
+  [![GitHub Tags](https://img.shields.io/github/tag/ndench/ansible-role-fakes3.svg)](https://github.com/ndench/ansible-role-fakes3)
+  [![GitHub Stars](https://img.shields.io/github/stars/ndench/ansible-role-fakes3.svg)](https://github.com/ndench/ansible-role-fakes3)
+description: |
+  > * installs [fakes3](https://github.com/jubos/fake-s3)
+  > * configures fakes3 systemd service
+  > * (option) creates fakes3 bucket
+  > * allows development against the S3 API
+after_dependencies: |
+  * python packages
+      * (optional) boto (required to create fakes3 bucket)
+after_usage: |
+  # TODO
+
+  * get docker build working (vagrant works fine)
+    * issue is to do with docker not being able to run systemd or upstart

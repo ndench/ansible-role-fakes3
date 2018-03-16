@@ -1,0 +1,6 @@
+---
+- name: restart fakes3
+  service:
+    name: "{{ fakes3_service_name }}"
+    state: restarted
+  when: fakes3_service_state != 'stopped'

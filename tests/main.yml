@@ -1,0 +1,16 @@
+---
+- hosts: all
+  connection: local
+  vars:
+    fakes3_root: "{{ ansible_env.HOME }}/fakes3"
+    fakes3_create_bucket: true
+  pre_tasks:
+    - name: install pip dependencies
+      pip:
+        name: "{{ item }}"
+      with_items:
+        - boto
+        - boto3
+        - botocore
+  roles:
+    - ndench.fakes3

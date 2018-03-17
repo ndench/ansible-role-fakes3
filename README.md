@@ -64,7 +64,7 @@ These are the handlers that are defined in `handlers/main.yml`.
 ---
 - name: restart fakes3
   service:
-    name: "{{ fakes3_service_name }}"
+    name: "fakes3"
     state: restarted
   when: fakes3_service_state != 'stopped'
 
@@ -78,18 +78,8 @@ This is an example playbook:
 ```yaml
 ---
 - hosts: all
-  connection: local
   vars:
     fakes3_root: "{{ ansible_env.HOME }}/fakes3"
-    fakes3_create_bucket: true
-  pre_tasks:
-    - name: install pip dependencies
-      pip:
-        name: "{{ item }}"
-      with_items:
-        - boto
-        - boto3
-        - botocore
   roles:
     - ndench.fakes3
 

@@ -5,10 +5,10 @@
     dest: "{{ ansible_env.HOME }}/.s3cfg"
 
 - name: check if fakes3 bucket exists
-  command: s3cmd ls s3://{{ fakes3_bucket }}
+  command: s3cmd ls s3://{{ fakes3_bucket_name }}
   ignore_errors: true
   register: check_bucket
 
 - name: create fakes3 bucket
-  command: s3cmd mb s3://{{ fakes3_bucket }}
+  command: s3cmd mb s3://{{ fakes3_bucket_name }}
   when: check_bucket|failed

@@ -8,7 +8,7 @@
 > `ndench.fakes3` is an [Ansible](http://www.ansible.com) role which:
 >
 > * installs [fakes3](https://github.com/jubos/fake-s3)
-> * configures fakes3 systemd service
+> * configures fakes3 service
 > * (optional) create fakes3 bucket, by installing s3cmd
 > * allows development against the S3 API
 

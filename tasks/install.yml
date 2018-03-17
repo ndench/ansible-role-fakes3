@@ -16,3 +16,9 @@
     daemon_reload: true
     state: "{{ fakes3_service_state }}"
     enabled: "{{ fakes3_service_enabled }}"
+
+- name: install s3cmd
+  apt:
+    package: s3cmd
+    state: present
+  when: fakes3_create_bucket

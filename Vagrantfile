@@ -18,7 +18,7 @@ Vagrant.configure("2") do |config|
 
   config.vm.provision "ansible_local" do |ansible|
     ansible.compatibility_mode = "2.0"
-    ansible.galaxy_role_file = "requirements.yml"
+    ansible.galaxy_role_file = "tests/requirements.yml"
     ansible.galaxy_roles_path = "/home/ubuntu/.ansible/roles"
     ansible.playbook = "tests/main.yml"
     ansible.verbose = 'vv'

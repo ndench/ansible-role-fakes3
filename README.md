@@ -9,7 +9,7 @@
 >
 > * installs [fakes3](https://github.com/jubos/fake-s3)
 > * configures fakes3 systemd service
-> * (option) creates fakes3 bucket
+> * (optional) create fakes3 bucket, by installing s3cmd
 > * allows development against the S3 API
 
 ## Installation
@@ -36,10 +36,6 @@ $ git clone https://github.com/ndench/ansible-role-fakes3.git ndench.fakes3
 
 * Ansible >= 2.4
 * {"role"=>"geerlingguy.ruby", "become"=>true}
-* geerlingguy.ruby
-* python packages
-    * boto3
-    * botocore
 
 ## Variables
 
@@ -82,6 +78,7 @@ This is an example playbook:
 ```yaml
 ---
 - hosts: all
+  connection: local
   vars:
     fakes3_root: "{{ ansible_env.HOME }}/fakes3"
     fakes3_create_bucket: true
@@ -90,6 +87,7 @@ This is an example playbook:
       pip:
         name: "{{ item }}"
       with_items:
+        - boto
         - boto3
         - botocore
   roles:
@@ -99,6 +97,9 @@ This is an example playbook:
 
 # TODO
 
+* use ansible aws_s3 module to create the bucket instead of s3cmd
+  * need to update to ansible 2.5 beacuse of a bug with 2.4
+  * https://github.com/ansible/ansible/issues/33083
 * get docker build working (vagrant works fine)
   * issue is to do with docker not being able to run systemd or upstart
 

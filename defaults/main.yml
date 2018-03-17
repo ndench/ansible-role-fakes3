@@ -5,7 +5,7 @@ fakes3_service_state: started
 fakes3_root: /mnt/fakes3_root
 
 # Whether to create a bucket
-fakes3_create_bucket: false
+fakes3_create_bucket: true
 # NOTE: For some reaon s3cmd only works when bucket name has an underscore
 fakes3_bucket_name: s3_dev
 

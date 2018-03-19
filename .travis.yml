@@ -1,26 +1,12 @@
 ---
-sudo: required
 dist: xenial
 
 language: python
 python: "3.6"
 
-# Doc: https://docs.travis-ci.com/user/customizing-the-build#Build-Matrix
-env:
-  - ANSIBLE_VERSION=latest
-  - ANSIBLE_VERSION=2.4
-  - ANSIBLE_VERSION=2.4.1
-  - ANSIBLE_VERSION=2.4.2
-  - ANSIBLE_VERSION=2.4.3
-
 branches:
   only:
     - master
-
-install:
-  # Install Ansible.
-  - if [ "$ANSIBLE_VERSION" = "latest" ]; then pip install ansible; else pip install ansible==$ANSIBLE_VERSION; fi
-  - if [ "$ANSIBLE_VERSION" = "latest" ]; then pip install ansible-lint; fi
 
 script:
   - make test

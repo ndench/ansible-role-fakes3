@@ -1,51 +1,121 @@
-fakes3
-======
+# Ansible ndench.fakes3 role
 
-[![Build Status](https://travis-ci.org/ndench/ansible-role-fakes3.svg?branch=master)](https://travis-ci.org/ndench/ansible-role-fakes3)
+[![Build Status](https://img.shields.io/travis/ndench/ansible-role-fakes3.svg)](https://travis-ci.org/ndench/ansible-role-fakes3)
+[![Galaxy](http://img.shields.io/badge/galaxy-ndench.fakes3-role-blue.svg)](https://galaxy.ansible.com/ndench/fakes3)
+[![GitHub Tags](https://img.shields.io/github/tag/ndench/ansible-role-fakes3.svg)](https://github.com/ndench/ansible-role-fakes3)
+[![GitHub Stars](https://img.shields.io/github/stars/ndench/ansible-role-fakes3.svg)](https://github.com/ndench/ansible-role-fakes3)
 
-Ansible role to install [fakes3](https://github.com/jubos/fake-s3) as a Systemd service.
-Also installs s3cmd and creates a bucket.
+> `ndench.fakes3` is an [Ansible](http://www.ansible.com) role which:
+>
+> * installs [fakes3](https://github.com/jubos/fake-s3)
+> * configures fakes3 service
+> * (optional) create fakes3 bucket, by installing s3cmd
+> * allows development against the S3 API
 
-Requirements
-------------
+## Installation
 
-* Systemd
+Using `ansible-galaxy`:
 
-Role Variables
---------------
-
-All variables are listed below, along with their default values in [defaults/main.yml](defaults/main.yml):
-
-```yaml
-fakes3_bucket: s3_dev # for some reason if the bucket name doesn't have an underscore, s3cmd will fail
-fakes3_root: /mnt/fakes3_root
+```shell
+$ ansible-galaxy install ndench.fakes3
 ```
 
-Dependencies
-------------
+Using `requirements.yml`:
 
-None.
+```yaml
+- src: ndench.fakes3
+```
 
-Example Playbook
-----------------
+Using `git`:
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
+```shell
+$ git clone https://github.com/ndench/ansible-role-fakes3.git ndench.fakes3
+```
 
-    - hosts: dev
-      roles:
-         - { role: ndench.fakes3 }
+## Dependencies
 
-License
--------
+* Ansible >= 2.4
+* {"role"=>"geerlingguy.ruby", "become"=>true}
 
-MIT
+## Variables
 
-Author Information
-------------------
+Here is a list of all the default variables for this role, which are also available in `defaults/main.yml`.
 
-This role was created in 2017 by [Nathan Dench](https://www.linkedin.com/in/nathandench/).
+```yaml
+---
+fakes3_gem: fakes3
+fakes3_service_enabled: yes
+fakes3_service_state: started
+fakes3_root: /mnt/fakes3_root
 
-TODO
-----
+# Whether to create a bucket
+fakes3_create_bucket: true
+# NOTE: For some reaon s3cmd only works when bucket name has an underscore
+fakes3_bucket_name: s3_dev
 
-* use the s3_bucket ansible module instead of s3cmd
+
+```
+
+## Handlers
+
+These are the handlers that are defined in `handlers/main.yml`.
+
+```yaml
+---
+- name: restart fakes3
+  service:
+    name: "fakes3"
+    state: restarted
+  when: fakes3_service_state != 'stopped'
+
+```
+
+
+## Usage
+
+This is an example playbook:
+
+```yaml
+---
+- hosts: all
+  vars:
+    fakes3_root: "{{ ansible_env.HOME }}/fakes3"
+  roles:
+    - ndench.fakes3
+
+```
+
+# TODO
+
+* use ansible aws_s3 module to create the bucket instead of s3cmd
+  * need to update to ansible 2.5 beacuse of a bug with 2.4
+  * https://github.com/ansible/ansible/issues/33083
+* get docker build working (vagrant works fine)
+  * issue is to do with docker not being able to run systemd or upstart
+
+## Testing
+
+```shell
+$ git clone https://github.com/ndench/ansible-role-fakes3.git
+$ cd ansible-role-fakes3
+$ make test
+```
+
+## Contributing
+In lieu of a formal style guide, take care to maintain the existing coding style. Add unit tests and examples for any new or changed functionality.
+
+1. Fork it
+2. Create your feature branch (`git checkout -b my-new-feature`)
+3. Commit your changes (`git commit -am 'Add some feature'`)
+4. Push to the branch (`git push origin my-new-feature`)
+5. Create new Pull Request
+
+*Note: To update the `README.md` file please install and run `ansible-role`:*
+
+```shell
+$ gem install ansible-role
+$ ansible-role docgen
+```
+
+## License
+Copyright (c)  under the MIT license.

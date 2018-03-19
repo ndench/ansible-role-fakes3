@@ -1,15 +1,14 @@
 galaxy_info:
   author: ndench
   description: Lightweight server that supports the AWS S3 API
-  company: DingoPM
-  license: license MIT
-
+  license: MIT
   min_ansible_version: 2.4
 
   platforms:
   - name: Ubuntu
     versions:
     - xenial
+    - trusty
 
   galaxy_tags:
       - development

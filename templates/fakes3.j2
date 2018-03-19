@@ -7,14 +7,14 @@
 ### END INIT INFO
 
 NAME=fakes3
-SCRIPT=/usr/local/bin/fakes3 -r {{ fakes3_root }} -p 4567
+SCRIPT="/usr/local/bin/fakes3 -r {{ fakes3_root }} -p 4567"
 RUNAS=root
 
-PIDFILE=/var/run/${NAME}.pid
-LOGFILE=/var/log/${NAME}.log
+PIDFILE=/var/run/$NAME.pid
+LOGFILE=/var/log/$NAME.log
 
 start() {
-  if [ -f /var/run/$PIDNAME ] && kill -0 $(cat /var/run/$PIDNAME); then
+  if [ -f /var/run/$PIDFILE ] && kill -0 $(cat /var/run/$PIDFILE); then
     echo 'Service already running' >&2
     return 1
   fi

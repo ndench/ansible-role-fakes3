@@ -7,7 +7,7 @@
 ### END INIT INFO
 
 NAME=fakes3
-SCRIPT="/usr/local/bin/fakes3 -r {{ fakes3_root }} -p 4567"
+SCRIPT="/usr/local/bin/fakes3 -r {{ fakes3_root }} -p {{ fakes3_port }} -H {{ fakes3_hostname }}"
 RUNAS=root
 
 PIDFILE=/var/run/$NAME.pid

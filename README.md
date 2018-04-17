@@ -47,6 +47,8 @@ fakes3_gem: fakes3
 fakes3_service_enabled: yes
 fakes3_service_state: started
 fakes3_root: /mnt/fakes3_root
+fakes3_port: 4567
+fakes3_hostname: localhost
 
 # Whether to create a bucket
 fakes3_create_bucket: true

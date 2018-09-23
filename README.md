@@ -36,6 +36,7 @@ $ git clone https://github.com/ndench/ansible-role-fakes3.git ndench.fakes3
 
 * Ansible >= 2.4
 * {"role"=>"geerlingguy.ruby", "become"=>true}
+* (Fake S3 license key)[https://github.com/jubos/fake-s3#licensing]
 
 ## Variables
 
@@ -52,7 +53,7 @@ fakes3_hostname: localhost
 
 # Whether to create a bucket
 fakes3_create_bucket: true
-# NOTE: For some reaon s3cmd only works when bucket name has an underscore
+# NOTE: For some reason s3cmd only works when bucket name has an underscore
 fakes3_bucket_name: s3_dev
 
 
@@ -82,6 +83,7 @@ This is an example playbook:
 - hosts: all
   vars:
     fakes3_root: "{{ ansible_env.HOME }}/fakes3"
+    fakes3_license_key: 1234567890
   roles:
     - ndench.fakes3
 

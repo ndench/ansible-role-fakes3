@@ -2,5 +2,6 @@
 - hosts: all
   vars:
     fakes3_root: "{{ ansible_env.HOME }}/fakes3"
+    fakes3_license_key: 1234567890
   roles:
     - ndench.fakes3

@@ -12,6 +12,8 @@ description: |
   > * configures fakes3 service
   > * (optional) create fakes3 bucket, by installing s3cmd
   > * allows development against the S3 API
+after_dependencies: |
+  * (Fake S3 license key)[https://github.com/jubos/fake-s3#licensing]
 after_usage: |
   # TODO
 

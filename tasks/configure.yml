@@ -11,4 +11,4 @@
 
 - name: create fakes3 bucket
   command: s3cmd mb s3://{{ fakes3_bucket_name }}
-  when: check_bucket|failed
+  when: check_bucket is failed

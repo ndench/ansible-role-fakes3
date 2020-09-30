@@ -2,4 +2,8 @@
 access_key = abc
 host_base = localhost:4567
 host_bucket = %(bucket)s.localhost:4567
+{% if fakes3_ssl_cert and fakes3_ssl_key %}
+use_https = True
+{% else %}
 use_https = False
+{% endif %}

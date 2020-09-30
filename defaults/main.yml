@@ -11,3 +11,6 @@ fakes3_create_bucket: true
 # NOTE: For some reason s3cmd only works when bucket name has an underscore
 fakes3_bucket_name: s3_dev
 
+# Path to ssl cert and key to run fakeS3 over HTTPS
+fakes3_ssl_cert: ~
+fakes3_ssl_key: ~

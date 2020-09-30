@@ -12,5 +12,7 @@ fakes3_create_bucket: true
 fakes3_bucket_name: s3_dev
 
 # Path to ssl cert and key to run fakeS3 over HTTPS
+# NOTE: This ssl cert needs to be for {{ fakes3_hostname }}:{{ fakes3_port }}
+# and also localhost:{{ fakes3_port }}
 fakes3_ssl_cert: ~
 fakes3_ssl_key: ~

@@ -1,7 +1,6 @@
 # Ansible ndench.fakes3 role
 
 [![Build Status](https://img.shields.io/travis/ndench/ansible-role-fakes3.svg)](https://travis-ci.org/ndench/ansible-role-fakes3)
-[![Galaxy](http://img.shields.io/badge/galaxy-ndench.fakes3-role-blue.svg)](https://galaxy.ansible.com/ndench/fakes3)
 [![GitHub Tags](https://img.shields.io/github/tag/ndench/ansible-role-fakes3.svg)](https://github.com/ndench/ansible-role-fakes3)
 [![GitHub Stars](https://img.shields.io/github/stars/ndench/ansible-role-fakes3.svg)](https://github.com/ndench/ansible-role-fakes3)
 

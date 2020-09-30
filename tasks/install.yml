@@ -14,10 +14,11 @@
     group: root
 
 - name: ensure fake s3 is enabled
-  service:
+  systemd:
     name: fakes3
     state: "{{ fakes3_service_state }}"
     enabled: "{{ fakes3_service_enabled }}"
+    daemon_reload: true
 
 - name: install s3cmd
   apt:

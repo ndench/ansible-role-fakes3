@@ -1,7 +1,7 @@
 ---
 - name: copy s3cfg
-  copy:
-    src: s3cfg
+  template:
+    src: s3cfg.j2
     dest: "{{ ansible_env.HOME }}/.s3cfg"
 
 - name: check if fakes3 bucket exists
